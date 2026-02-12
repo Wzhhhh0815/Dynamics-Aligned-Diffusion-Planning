@@ -6,6 +6,8 @@ This repository contains the source code for the paper **"Dynamics-Aligned Diffu
 
 DADP is a unified diffusion-based planning framework that leverages learned dynamics models for efficient trajectory optimization in offline reinforcement learning. The framework incorporates both forward and inverse guidance mechanisms to align the diffusion process with environment dynamics.
 
+**Note:** This implementation is built upon the [Diffuser](https://github.com/jannerm/diffuser) codebase and can be integrated or plugged into existing diffusion-based planning pipelines.
+
 ## Installation
 
 ### Prerequisites
@@ -44,6 +46,16 @@ DADP/
 
 ## Usage
 
+### Training Dynamics Model
+
+Train the inverse dynamics model (VAE-based) for guidance:
+
+```bash
+python dynamics_model/main.py
+```
+
+The dynamics model will be saved in `inverse_dynamics_model/models/` with training loss plots.
+
 ### Training Diffusion Model
 
 ```bash
@@ -67,7 +79,7 @@ python scripts/plans_inverse.py --dataset hopper-medium-expert-v2
 - HalfCheetah (all variants)
 - Hopper (all variants)
 - Walker2d (all variants)
-- Ant (all variants)
+- maze2d (all variants)
 
 All environments use D4RL datasets with versions: random, medium, medium-replay, medium-expert, expert.
 
@@ -107,4 +119,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 This work builds upon:
 - [D4RL](https://github.com/Farama-Foundation/d4rl) for offline RL datasets
-- [Diffuser](https://github.com/jannerm/diffuser) for diffusion-based planning
+- [Diffuser](https://github.com/jannerm/diffuser) for diffusion-based planning baseline
+
+The codebase is built on top of the Diffuser framework, allowing seamless integration with diffusion-based trajectory optimization methods.
